@@ -1,0 +1,23 @@
+@import "@/style/app.scss";
+.table-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid $color-border;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    @include flex-center();
+    &.correct {
+        background-color: $color-correct;
+        color: white;
+    }
+    &.present {
+        background-color: $color-present;
+        color: white;
+    }
+    &.absent {
+        background-color: $color-absent;
+        color: white;
+    }
+}
