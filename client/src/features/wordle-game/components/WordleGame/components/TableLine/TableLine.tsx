@@ -6,14 +6,16 @@ import TableCell from "../TableCell/TableCell";
 
 // --- style ---
 import style from "./TableLine.module.scss";
+import type { LetterCheck } from "../../../../types/wordleGame.type";
 
-const NUMBER_OF_COLS = 5;
-
+// --- types ---
 type TableLineProps = {
   word: string;
   hasError?: boolean;
-  feedback?: Record<string, "correct" | "present" | "absent">[] | undefined;
+  feedback?: LetterCheck[] | undefined;
 };
+
+const NUMBER_OF_COLS = 5;
 
 const TableLine = ({ word, hasError, feedback }: TableLineProps) => {
   return (
