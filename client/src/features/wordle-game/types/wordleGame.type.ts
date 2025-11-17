@@ -8,8 +8,9 @@ export interface LetterCheck {
 export type GuessFeedback = LetterStatus[];
 
 export interface GuessResponse {
-  isCorrect: boolean;
+  correct: boolean;
   gameOver: boolean;
+  targetWord?: string | null;
   letters: LetterCheck[];
 }
 

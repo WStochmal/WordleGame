@@ -1,7 +1,5 @@
 # Wordle — my implementation
 
-❗ Work in progress: Project under development
-
 This is my implementation of the Wordle game.
 
 Server responsibility

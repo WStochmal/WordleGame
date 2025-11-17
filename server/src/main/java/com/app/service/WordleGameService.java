@@ -11,10 +11,10 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 
 
 @Service
@@ -27,9 +27,6 @@ public class WordleGameService {
 
 
     public ResponseEntity<ResponseDto<Void>> startNewGame(HttpSession session) {
-
-        System.out.println("Starting a new Wordle game session: " + session);
-
         String newWord = generateRandomWord();
         session.setAttribute("wordleWord", newWord);
         session.setAttribute("attempts", 0);
@@ -53,45 +50,39 @@ public class WordleGameService {
 
         System.out.println("Processing guess: " + guess.getGuess() + " for session: " + session + " Target word: " + targetWordAttr + " Attempts: " + attempts);
 
-
         if (targetWordAttr == null || attempts == null) {
             return ResponseEntity
                     .badRequest()
                     .body(new ResponseDto<>(false, null));
         }
 
-        String target = targetWordAttr.toUpperCase();
-
         attempts++;
         session.setAttribute("attempts", attempts);
 
         List<LetterCheck> result = new ArrayList<>();
 
-
-
-            for (int i = 0; i < guess.getGuess().length(); i++) {
-                char letter = guess.getGuess().charAt(i);
-                if (letter == target.charAt(i)) {
-                    result.add(new LetterCheck(letter, "correct"));
-                } else if (target.indexOf(letter) != -1) {
-                    result.add(new LetterCheck(letter, "present"));
-                } else {
-                    result.add(new LetterCheck(letter, "absent"));
-                }
+        String target = targetWordAttr.toUpperCase();
+        for (int i = 0; i < guess.getGuess().length(); i++) {
+            char letter = guess.getGuess().charAt(i);
+            if (letter == target.charAt(i)) {
+                result.add(new LetterCheck(letter, "correct"));
+            } else if (target.indexOf(letter) != -1) {
+                result.add(new LetterCheck(letter, "present"));
+            } else {
+                result.add(new LetterCheck(letter, "absent"));
             }
-
-
+        }
+        
         boolean isCorrect = guess.getGuess().equalsIgnoreCase(target);
         boolean gameOver = isCorrect || attempts >= MAX_ATTEMPTS;
-
-
+        String targetWord = null;
 
         if (gameOver) {
+            targetWord = target;
             session.invalidate();
         }
 
-        GuessResponse response = new GuessResponse(isCorrect, gameOver, result);
-
+        GuessResponse response = new GuessResponse(isCorrect, gameOver,targetWord, result);
         return ResponseEntity.ok(new ResponseDto<>(true, response));
     }
 }

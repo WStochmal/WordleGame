@@ -12,5 +12,6 @@ import java.util.List;
 public class GuessResponse {
     private boolean isCorrect;
     private boolean gameOver;
+    private String targetWord;
     private List<LetterCheck> letters;
 }
