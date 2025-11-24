@@ -1,5 +1,5 @@
 // --- components ---
-import type { LetterCheck } from "../../../../types/wordleGame.type";
+import type { LetterCheck } from "../../types/wordleGame.type";
 
 // --- style ---
 import style from "./TableCell.module.scss";

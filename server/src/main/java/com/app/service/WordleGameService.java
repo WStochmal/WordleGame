@@ -72,7 +72,7 @@ public class WordleGameService {
                 result.add(new LetterCheck(letter, "absent"));
             }
         }
-        
+
         boolean isCorrect = guess.getGuess().equalsIgnoreCase(target);
         boolean gameOver = isCorrect || attempts >= MAX_ATTEMPTS;
         String targetWord = null;

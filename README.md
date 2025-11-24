@@ -20,4 +20,24 @@ Base URL: `http://localhost:8080`
 
 The server is authoritative for game rules and validation; the client only renders state returned by these endpoints.
 
-![App screenshot](images/image.png)
+## Screenshots
+
+### Fail to connect with server
+
+![App screenshot](images/Wordle-error.png)
+
+### Start of game
+
+![App screenshot](images/Wordle-start.png)
+
+# Game in progress
+
+![App screenshot](images/Wordle-ongoing.png)
+
+# Game over (win)
+
+![App screenshot](images/Wordle-win.png)
+
+# Game over (loss)
+
+![App screenshot](images/Wordle-fail.png)

@@ -6,7 +6,7 @@ import TableCell from "../TableCell/TableCell";
 
 // --- style ---
 import style from "./TableLine.module.scss";
-import type { LetterCheck } from "../../../../types/wordleGame.type";
+import type { LetterCheck } from "../../types/wordleGame.type";
 
 // --- types ---
 type TableLineProps = {

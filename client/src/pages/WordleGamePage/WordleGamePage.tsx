@@ -1,5 +1,5 @@
 // --- components ---
-import WordleGame from "@/features/wordle-game/components/WordleGame/WordleGame";
+import WordleGame from "@/features/wordle-game/WordleGame";
 
 // --- style ---
 import style from "./WordleGamePage.module.scss";
